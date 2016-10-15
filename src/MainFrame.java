@@ -34,7 +34,15 @@ public class MainFrame extends JFrame {
 			
 		});
 		
-		toolbar.setTextPanel(textPanel);
+//		toolbar.setTextPanel(textPanel);
+		toolbar.setStringListener(new StringListener () {
+
+			public void textEmitted(String string) {
+				textPanel.appendText(string);
+				
+			}
+			
+		});
 		
 //		add(new JScrollPane(textArea), BorderLayout.CENTER);
 		add(toolbar, BorderLayout.NORTH);
