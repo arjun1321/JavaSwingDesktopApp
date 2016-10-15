@@ -13,6 +13,7 @@ public class MainFrame extends JFrame {
 	private JButton btn;
 	private TextPanel textPanel;
 	private Toolbar toolbar;
+	private FormPanel formPanel;
 	
 	public MainFrame() {
 		
@@ -23,6 +24,7 @@ public class MainFrame extends JFrame {
 		btn = new JButton("Click Me!");
 		textPanel = new TextPanel();
 		toolbar = new Toolbar();
+		formPanel = new FormPanel();
 		
 		btn.addActionListener(new ActionListener() {
 
@@ -45,6 +47,7 @@ public class MainFrame extends JFrame {
 		});
 		
 //		add(new JScrollPane(textArea), BorderLayout.CENTER);
+		add(formPanel, BorderLayout.WEST);
 		add(toolbar, BorderLayout.NORTH);
 		add(textPanel, BorderLayout.CENTER);
 		add(btn, BorderLayout.SOUTH);
