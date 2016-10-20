@@ -37,6 +37,20 @@ public class MainFrame extends JFrame {
 //		});
 		
 //		toolbar.setTextPanel(textPanel);
+		
+		formPanel.setFormListener(new FormListener() {
+
+			public void formEventOccured(FormEvent event) {
+				String name = event.getName();
+				String occupation = event.getOccupation();
+				
+				textPanel.appendText(name +": "+ occupation + "\n");
+				
+			}
+			
+			
+		});
+		
 		toolbar.setStringListener(new StringListener () {
 
 			public void textEmitted(String string) {
