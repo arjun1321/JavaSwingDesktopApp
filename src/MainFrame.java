@@ -10,7 +10,7 @@ import javax.swing.JTextArea;
 
 public class MainFrame extends JFrame {
 //	private JTextArea textArea;
-	private JButton btn;
+//	private JButton btn;
 	private TextPanel textPanel;
 	private Toolbar toolbar;
 	private FormPanel formPanel;
@@ -21,20 +21,20 @@ public class MainFrame extends JFrame {
 		setLayout(new BorderLayout());
 		
 //		textArea = new JTextArea();
-		btn = new JButton("Click Me!");
+//		btn = new JButton("Click Me!");
 		textPanel = new TextPanel();
 		toolbar = new Toolbar();
 		formPanel = new FormPanel();
 		
-		btn.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
+//		btn.addActionListener(new ActionListener() {
+//
+//			public void actionPerformed(ActionEvent arg0) {
 //				textArea.append("Hello\n");
-				textPanel.appendText("Hello\n");
-				
-			}
-			
-		});
+//				textPanel.appendText("Hello\n");
+//				
+//			}
+//			
+//		});
 		
 //		toolbar.setTextPanel(textPanel);
 		toolbar.setStringListener(new StringListener () {
@@ -50,7 +50,7 @@ public class MainFrame extends JFrame {
 		add(formPanel, BorderLayout.WEST);
 		add(toolbar, BorderLayout.NORTH);
 		add(textPanel, BorderLayout.CENTER);
-		add(btn, BorderLayout.SOUTH);
+//		add(btn, BorderLayout.SOUTH);
 		
 		setSize(600, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
