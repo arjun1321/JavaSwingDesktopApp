@@ -63,7 +63,7 @@ public class FormPanel extends JPanel {
 				String occupation = occupationField.getText();
 				AgeCategory ageCat = (AgeCategory)ageList.getSelectedValue();
 				
-				FormEvent ev = new FormEvent(this, name, occupation);
+				FormEvent ev = new FormEvent(this, name, occupation, ageCat.getId());
 				if(formListener != null)
 				formListener.formEventOccured(ev);
 				
@@ -149,5 +149,9 @@ class AgeCategory {
 	
 	public String toString() {
 		return text;
+	}
+	
+	public int getId() {
+		return id;
 	}
 }
