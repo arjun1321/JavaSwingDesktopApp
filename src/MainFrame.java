@@ -4,6 +4,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -19,6 +22,8 @@ public class MainFrame extends JFrame {
 		
 		super("Hello World");
 		setLayout(new BorderLayout());
+		
+		setJMenuBar(createMenuBar());
 		
 //		textArea = new JTextArea();
 //		btn = new JButton("Click Me!");
@@ -73,6 +78,35 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
+	}
+	
+	private JMenuBar createMenuBar() {
+		JMenuBar menuBar = new JMenuBar();
+		
+		JMenu fileMenu = new JMenu("File");
+		
+		JMenuItem exportDataItem = new JMenuItem("Export Data...");
+		JMenuItem importDataItem = new JMenuItem("Import Data...");
+		JMenuItem exitItem = new JMenuItem("Exit");
+		
+		fileMenu.add(exportDataItem);
+		fileMenu.add(importDataItem);
+		fileMenu.addSeparator();
+		fileMenu.add(exitItem);
+		
+		JMenu windowMenu = new JMenu("Window");
+		JMenu showMenu = new JMenu("Show");
+		
+		JMenuItem showFormItem = new JMenuItem("Person Form");
+		
+		showMenu.add(showFormItem);
+		windowMenu.add(showMenu);
+		
+		menuBar.add(fileMenu);
+		menuBar.add(windowMenu);
+		
+		
+		return menuBar;
 	}
 	
 	
