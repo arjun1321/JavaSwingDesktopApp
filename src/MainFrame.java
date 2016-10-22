@@ -10,6 +10,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.KeyStroke;
+
+import com.sun.glass.events.KeyEvent;
 
 
 public class MainFrame extends JFrame {
@@ -114,6 +117,19 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				JCheckBoxMenuItem menuItem = (JCheckBoxMenuItem) arg0.getSource();
 				formPanel.setVisible(menuItem.isSelected());
+			}
+			
+		});
+		
+		fileMenu.setMnemonic(KeyEvent.VK_F);
+		exitItem.setMnemonic(KeyEvent.VK_X);
+		// Accelerator is used to create a shortcut key
+		exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
+		
+		exitItem.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
 			}
 			
 		});

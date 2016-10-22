@@ -26,6 +26,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+import com.sun.glass.events.KeyEvent;
+
 
 public class FormPanel extends JPanel {
 	
@@ -60,6 +62,9 @@ public class FormPanel extends JPanel {
 		citizenCheck = new JCheckBox();
 		taxField = new JTextField(10);
 		taxLabel = new JLabel("Text ID: ");
+		
+		nameLabel.setDisplayedMnemonic(KeyEvent.VK_N);
+		nameLabel.setLabelFor(nameField);
 		
 		maleRadio = new JRadioButton("Male");
 		femaleRadio = new JRadioButton("Female");
@@ -112,6 +117,8 @@ public class FormPanel extends JPanel {
 		empCombo.setEditable(true);
 		
 		okBtn = new JButton("OK");
+		// Setting mnemonic
+		okBtn.setMnemonic(KeyEvent.VK_O);
 		
 		okBtn.addActionListener(new ActionListener() {
 
