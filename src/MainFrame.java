@@ -39,6 +39,7 @@ public class MainFrame extends JFrame {
 		toolbar = new Toolbar();
 		formPanel = new FormPanel();
 		fileChooser = new JFileChooser();
+		fileChooser.addChoosableFileFilter(new PersonFileFilter());
 		
 //		btn.addActionListener(new ActionListener() {
 //
