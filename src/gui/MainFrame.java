@@ -18,6 +18,8 @@ import javax.swing.KeyStroke;
 
 import com.sun.glass.events.KeyEvent;
 
+import controller.Controller;
+
 
 public class MainFrame extends JFrame {
 //	private JTextArea textArea;
@@ -26,6 +28,7 @@ public class MainFrame extends JFrame {
 	private Toolbar toolbar;
 	private FormPanel formPanel;
 	private JFileChooser fileChooser;
+	private Controller controller;
 	
 	public MainFrame() {
 		
@@ -39,6 +42,8 @@ public class MainFrame extends JFrame {
 		textPanel = new TextPanel();
 		toolbar = new Toolbar();
 		formPanel = new FormPanel();
+		controller = new Controller();
+		
 		fileChooser = new JFileChooser();
 		fileChooser.addChoosableFileFilter(new PersonFileFilter());
 		
@@ -57,13 +62,7 @@ public class MainFrame extends JFrame {
 		formPanel.setFormListener(new FormListener() {
 
 			public void formEventOccured(FormEvent event) {
-				String name = event.getName();
-				String occupation = event.getOccupation();
-				int ageCat = event.getAgeCategory();
-				String empCat = event.getEmploymentCategory();
-				String gender = event.getGender();
-				
-				textPanel.appendText(name +": "+ occupation + ": "+ ageCat + ", " + empCat +"\n");
+				controller.addPerson(event);
 				
 			}
 			
