@@ -138,6 +138,8 @@ public class MainFrame extends JFrame {
 		exitItem.setMnemonic(KeyEvent.VK_X);
 		// Accelerator is used to create a shortcut key
 		exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
+		importDataItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.CTRL_MASK));
+
 		
 		importDataItem.addActionListener(new ActionListener() {
 
