@@ -13,8 +13,13 @@ import gui.FormEvent;
 
 public class Controller {
 	Database db = new Database();
+	
 	public List<Person> getPeople() {
 		return db.getPeople();
+	}
+	
+	public void removePerson(int index) {
+		db.removePerson(index);
 	}
 	
 	public void addPerson(FormEvent ev) {
