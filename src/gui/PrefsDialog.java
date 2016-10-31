@@ -9,7 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 
@@ -19,6 +21,8 @@ public class PrefsDialog extends JDialog {
 	private JButton cancelButton;
 	private JSpinner portSpinner;
 	private SpinnerNumberModel spinnerModel;
+	private JTextField userField;
+	private JPasswordField passField;
 	
 	
 	public PrefsDialog(JFrame parent) {
@@ -28,11 +32,43 @@ public class PrefsDialog extends JDialog {
 		cancelButton = new JButton("Cancel");
 		spinnerModel = new SpinnerNumberModel(3306, 0, 9999, 1);
 		portSpinner = new JSpinner(spinnerModel);
+		userField = new JTextField(10);
+		passField = new JPasswordField(10);
+		
+		passField.setEchoChar('*');
 		
 		setLayout(new GridBagLayout());
 		
 		GridBagConstraints gc  = new GridBagConstraints();
 		gc.gridy = 0;
+		
+		// First Row // 		
+		gc.weightx = 1;
+		gc.weighty = 1;
+		gc.fill = GridBagConstraints.NONE;
+		
+		gc.gridx = 0;
+		
+		add(new JLabel("User: "), gc);
+		
+		gc.gridx++;
+		add(userField, gc);
+		
+		// Next Row //
+		gc.gridy++;
+		gc.weightx = 1;
+		gc.weighty = 1;
+		gc.fill = GridBagConstraints.NONE;
+				
+		gc.gridx = 0;
+				
+		add(new JLabel("Password: "), gc);
+				
+		gc.gridx++;
+		add(passField, gc);
+		
+		// Next Row //
+		gc.gridy++;
 		gc.weightx = 1;
 		gc.weighty = 1;
 		gc.fill = GridBagConstraints.NONE;
@@ -58,7 +94,9 @@ public class PrefsDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Integer value = (Integer)portSpinner.getValue();
-				System.out.println(value);
+				String user = userField.getText();
+				char[] password = passField.getPassword();
+				System.out.println(user + ": " + new String(password));
 				setVisible(false);
 			}
 			
