@@ -2,6 +2,8 @@ package model;
 
 import java.io.File;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.io.FileInputStream;
@@ -14,8 +16,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-
 import java.sql.Connection;
+
 
 public class Database {
 	private List<Person> people;
@@ -56,6 +58,23 @@ public class Database {
 				System.out.println("can't close connection");
 			}
 		}
+	}
+	
+	public void save() throws SQLException {
+		String checkSql = "select count(*) as count from people where id = ?";
+		PreparedStatement checkStmt = con.prepareStatement(checkSql);
+		
+		for(Person person: people) {
+			int id = person.getId();
+			checkStmt.setInt(1, id);
+			
+			ResultSet checkResult = checkStmt.executeQuery();
+			checkResult.next();
+			
+			int count = checkResult.getInt(1);
+			System.out.println("Count for person with ID " + id + "is" + count);
+		}
+		checkStmt.close();
 	}
 	
 	public List<Person> getPeople() {

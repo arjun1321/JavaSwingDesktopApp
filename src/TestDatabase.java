@@ -1,4 +1,10 @@
+import java.sql.SQLException;
+
+import model.AgeCategory;
 import model.Database;
+import model.EmploymentCategory;
+import model.Gender;
+import model.Person;
 
 
 public class TestDatabase {
@@ -12,6 +18,18 @@ public class TestDatabase {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		db.addPerson(new Person("Arjun", "developer", AgeCategory.adult, EmploymentCategory.employed,
+				"1111", true, Gender.male));
+		db.addPerson(new Person("Geeta", "game developer", AgeCategory.adult, EmploymentCategory.selfEmployed,
+				null, true, Gender.female));
+		
+		try {
+			db.save();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		db.disConnect();
 
 	}
