@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collections;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -120,6 +121,33 @@ public class Database {
 		updateStatement.close();
 		insertStatement.close();
 		checkStmt.close();
+	}
+	
+	public void load() throws SQLException {
+		people.clear();
+		String sql = "select id, name, age, employment_status, tax_id, india_citizen, gender, occupation from people order by name";
+		Statement selectStatement = con.createStatement();
+		
+		ResultSet results = selectStatement.executeQuery(sql);
+		
+		while(results.next()) {
+			int id = results.getInt("id");
+			String name = results.getString("name");
+			String age = results.getString("age");
+			String emp = results.getString("employment_status");
+			String tax = results.getString("tax_id");
+			boolean isIndia = results.getBoolean("india_citizen");
+			String gender = results.getString("gender");
+			String occ = results.getString("occupation");
+			
+			Person person = new Person(id, name, occ, AgeCategory.valueOf(age), EmploymentCategory.valueOf(emp), tax, isIndia, Gender.valueOf(gender));
+			people.add(person);
+			
+			System.out.println(person);
+		}
+		
+		results.close();
+		selectStatement.close();
 	}
 	
 	public List<Person> getPeople() {
